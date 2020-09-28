@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace LFA_WPF
+namespace Cryptology
 {
     /// <summary>
     /// Логика взаимодействия для LanguageBlock.xaml
@@ -30,7 +30,7 @@ namespace LFA_WPF
             InitializeComponent();
 
             //draw button for every language in Logic.Languages
-            foreach(string language in Logic.Languages.Keys)
+            foreach(string language in Common.Languages.Keys)
             {
                 RadioButton item = new RadioButton();
                 item.Content = language;
@@ -66,7 +66,7 @@ namespace LFA_WPF
                     //getting char[] from string and adding to languages
                     List<char> charList = new List<char>();
                     alphabet.Split(',').ToList().ForEach((string obj) => charList.Add(obj.First()));
-                    Logic.Languages.Add(name, charList.ToArray());
+                    Common.Languages.Add(name, charList.ToArray());
                     LanguageAdded?.Invoke(this,name);
 
                     //adding radio button to GUI

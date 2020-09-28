@@ -5,12 +5,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Controls.Primitives;
-using System.Xml.Serialization;
 
-namespace LFA_WPF
+namespace Cryptology.First
 {
-    public class DataElement: INotifyPropertyChanged //Interface to make table know when data chanched
+    public class DataElement : INotifyPropertyChanged //Interface to make table know when data chanched
     {
         //all this for interface
         public event PropertyChangedEventHandler PropertyChanged;
@@ -29,7 +27,7 @@ namespace LFA_WPF
             Frequency = 0;
         }
 
-        public DataElement(char key,uint count, double freq)
+        public DataElement(char key, uint count, double freq)
         {
             Char = key;
             Count = count;
@@ -37,21 +35,16 @@ namespace LFA_WPF
         }
     }
 
-    public class Logic
+    public class LogicFirst
     {
-        //alphabets
-        public static Dictionary<string,char[]> Languages = new Dictionary<string, char[]> { 
-            { "English", new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' } },
-            { "Ukrainian", new char[] { 'а', 'б', 'в', 'г', 'ґ', 'д', 'е', 'є', 'ж', 'з', 'и', 'і', 'ї', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ь', 'ю', 'я' } }
-        };
         //statistics
         public Dictionary<string, List<DataElement>> CalculatedLanguages;
 
-        public Logic()
+        public LogicFirst()
         {
             CalculatedLanguages = new Dictionary<string, List<DataElement>>();
             //fill statistic with zeros
-            foreach(var language in Languages.Keys)
+            foreach (var language in Common.Languages.Keys)
             {
                 AddLanguage(language);
             }
@@ -62,12 +55,12 @@ namespace LFA_WPF
             if (!CalculatedLanguages.ContainsKey(language))
             {
                 List<DataElement> dataElements = new List<DataElement>();
-                Array.ForEach(Languages[language], (char ch) => dataElements.Add(new DataElement(ch)));
+                Array.ForEach(Common.Languages[language], (char ch) => dataElements.Add(new DataElement(ch)));
                 CalculatedLanguages.Add(language, dataElements);
             }
         }
 
-        public bool UpdateWithFile(string language,string file)
+        public bool UpdateWithFile(string language, string file)
         {
             if (!File.Exists(file))
             {
@@ -76,7 +69,7 @@ namespace LFA_WPF
             try
             {
                 Dictionary<char, uint> result = new Dictionary<char, uint>();
-                Array.ForEach(Languages[language], (char ch) => result.Add(Char.ToLower(ch), 0));
+                Array.ForEach(Common.Languages[language], (char ch) => result.Add(Char.ToLower(ch), 0));
 
                 using (FileStream fs = File.OpenRead(file)) //these two lines would be a couple of times in this file, so it is important to know, why we need them
                 using (StreamReader sr = new StreamReader(fs)) //FileStream allows us to work with big files (>1GB). StreamReader (or Writer) let us simple way to write (read) to stream, without buffer and arrays
@@ -101,7 +94,7 @@ namespace LFA_WPF
             }
         }
 
-        private void ProcessLine(string line,ref Dictionary<char,uint> result)
+        private void ProcessLine(string line, ref Dictionary<char, uint> result)
         {
             foreach (char ch in line)
             {
@@ -117,7 +110,7 @@ namespace LFA_WPF
         {
             ulong sum = 0;
             CalculatedLanguages[language].ForEach((DataElement element) => sum += element.Count); //sum of all letters
-            CalculatedLanguages[language].ForEach((DataElement element) => element.Frequency = (double)element.Count/sum); //frequency
+            CalculatedLanguages[language].ForEach((DataElement element) => element.Frequency = (double)element.Count / sum); //frequency
         }
 
         public void ClearCalculated(string language)
@@ -126,7 +119,7 @@ namespace LFA_WPF
             AddLanguage(language);
         }
 
-        public bool ImportStat(string language,string file)
+        public bool ImportStat(string language, string file)
         {
             try
             {
@@ -134,7 +127,7 @@ namespace LFA_WPF
                 using (FileStream fs = File.OpenRead(file))
                 using (StreamReader sr = new StreamReader(fs))
                 {
-                    string saveString = $"Language : [Name : {language}, Alphabet : {String.Join(",",Languages[language])}]";
+                    string saveString = $"Language : [Name : {language}, Alphabet : {String.Join(",", Common.Languages[language])}]";
                     if (sr.ReadLine() != saveString)
                     {
                         //trying to import different language
@@ -162,7 +155,7 @@ namespace LFA_WPF
                 using (FileStream fs = File.OpenWrite(file))
                 using (StreamWriter sw = new StreamWriter(fs))
                 {
-                    string saveString = $"Language : [Name : {language}, Alphabet : {String.Join(",", Languages[language])}]";
+                    string saveString = $"Language : [Name : {language}, Alphabet : {String.Join(",", Common.Languages[language])}]";
                     sw.WriteLine(saveString); //to preserve importing to different language
                     foreach (var element in CalculatedLanguages[language])
                     {

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace LFA_WPF
+namespace Cryptology.First
 {
     /// <summary>
     /// Логика взаимодействия для ToolBlock.xaml

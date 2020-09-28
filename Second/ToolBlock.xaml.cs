@@ -1,7 +1,5 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Cryptology
+namespace Cryptology.Second
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для ToolBlock.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ToolBlock : UserControl
     {
-        public MainWindow()
+        public ToolBlock()
         {
             InitializeComponent();
         }

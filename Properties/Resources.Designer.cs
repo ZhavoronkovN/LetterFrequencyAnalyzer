@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LFA_WPF.Properties
+namespace Cryptology.Properties
 {
 
 

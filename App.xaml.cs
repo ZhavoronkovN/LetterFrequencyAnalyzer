@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace LFA_WPF
+namespace Cryptology
 {
     /// <summary>
     /// Логика взаимодействия для App.xaml

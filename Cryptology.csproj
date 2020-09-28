@@ -70,10 +70,31 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ToolBlock.xaml.cs">
+    <Compile Include="FirstTab.xaml.cs">
+      <DependentUpon>FirstTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="First\LogicFirst.cs" />
+    <Compile Include="First\ToolBlock.xaml.cs">
+      <DependentUpon>ToolBlock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SecondTab.xaml.cs">
+      <DependentUpon>SecondTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Second\CodingBlock.xaml.cs">
+      <DependentUpon>CodingBlock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Second\LogicSecond.cs" />
+    <Compile Include="Second\RuleBlock.xaml.cs">
+      <DependentUpon>RuleBlock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Second\ToolBlock.xaml.cs">
       <DependentUpon>ToolBlock.xaml</DependentUpon>
     </Compile>
     <Page Include="AddLanguageDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FirstTab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -95,12 +116,28 @@
     <Compile Include="LanguageBlock.xaml.cs">
       <DependentUpon>LanguageBlock.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Logic.cs" />
+    <Compile Include="Common.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="ToolBlock.xaml">
+    <Page Include="First\ToolBlock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SecondTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Second\CodingBlock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Second\RuleBlock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Second\ToolBlock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -143,5 +180,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
