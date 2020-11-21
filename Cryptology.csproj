@@ -90,6 +90,19 @@
     <Compile Include="Second\ToolBlock.xaml.cs">
       <DependentUpon>ToolBlock.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ThirdTab.xaml.cs">
+      <DependentUpon>ThirdTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Third\CodingBlock.xaml.cs">
+      <DependentUpon>CodingBlock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Third\KeyBlock.xaml.cs">
+      <DependentUpon>KeyBlock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Third\LogicThird.cs" />
+    <Compile Include="Third\ToolBlock.xaml.cs">
+      <DependentUpon>ToolBlock.xaml</DependentUpon>
+    </Compile>
     <Page Include="AddLanguageDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -138,6 +151,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Second\ToolBlock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ThirdTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Third\CodingBlock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Third\KeyBlock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Third\ToolBlock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
